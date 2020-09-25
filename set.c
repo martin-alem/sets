@@ -55,3 +55,48 @@ Node *addElement(Set *set, const void *data){
     set->tail = node;
     return node;
 }
+
+Node *getNode(const Set *set, int index){
+
+    if(set->head != NULL){
+
+        if(index <= -1 || index >= Size(set)){
+            return NULL;
+        }
+        Node *node = set->head, *newNode;
+        int i = 0;
+
+        do{
+            newNode = node;
+            node = node->next;
+            i += 1;
+        }while(i <= index);
+        return newNode;
+    }
+    return NULL;
+}
+
+
+void *getElement(const Set *set, int index){
+
+    if(set->head != NULL){
+
+        Node *node = getNode(set, index);
+        return (void *)node->data;
+    }
+    return NULL;
+}
+
+unsigned int Size(const Set *set) {
+
+    unsigned int len = 0;
+    if (set->head != NULL) {
+        Node *node = set->head;
+        while(node != NULL){
+            len += 1;
+            node = node->next;
+        }
+        return len;
+    }
+    return len;
+}

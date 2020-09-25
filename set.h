@@ -56,6 +56,14 @@ void clearSet(Set *set);
 Node *addElement(Set *set, const void *data);
 
 /*
+ * DEF: computes the size of a set
+ * PARAM: const Set *set - set to compute its size
+ * RETURN: returns the size of the set.
+*/
+unsigned int Size(const Set *set);
+
+
+/*
  * DEF: returns the node at a specific index
  * PARAM: Set *set - Set
  * PARAM: int index - index
@@ -87,14 +95,6 @@ int isMember(const Set *set, const void *data);
  * RETURN: 1 on success and -1 on failure
 */
 int removeElement(Set *set, int index);
-
-
-/*
- * DEF: computes the size of a set
- * PARAM: const Set *set - set to compute its size
- * RETURN: returns the size of the set.
-*/
-unsigned int Size(const Set *set);
 
 
 /*
