@@ -20,6 +20,7 @@ typedef struct node {
 typedef struct set{
     Node *head;
     Node *tail;
+    char type;
 }Set;
 
 
@@ -28,7 +29,7 @@ typedef struct set{
  * PARAM: Set *set - Set to be initialize
  * RETURN: returns void
 */
-void initSet(Set *set);
+void initSet(Set *set, char type);
 
 
 /*
@@ -45,6 +46,14 @@ void freeNode(void **node);
  * RETURN: returns void
 */
 void clearSet(Set *set);
+
+/*
+ * DEF: checks if an element is a member of a Set
+ * PARAM: Set *set - Set - set
+ * PARAM: const void *data - data
+ * RETURN: returns 1 if true and 0 otherwise
+*/
+int isMember(const Set *set, const void *data);
 
 
 /*
@@ -77,15 +86,6 @@ Node *getNode(const Set *set, int index);
  * RETURN: returns pointer to void
 */
 void *getElement(const Set *set, int index);
-
-
-/*
- * DEF: checks if an element is a member of a Set
- * PARAM: Set *set - Set - set
- * PARAM: const void *data - data
- * RETURN: returns 1 if true and 0 otherwise
-*/
-int isMember(const Set *set, const void *data);
 
 
 /*
