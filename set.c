@@ -139,6 +139,37 @@ int isMember(const Set *set, const void *data){
     return 0;
 }
 
+int removeElement(Set *set, int index){
+
+    if(set->head != NULL){
+
+        Node *node = getNode(set, index);
+        if(node == NULL){
+            return -1;
+        }
+        Node *nextNode, *prevNode;
+        if(set->head == node){
+            nextNode = node->next;
+            nextNode->prev = NULL;
+            set->head = nextNode;
+        }
+        else if(set->tail == node){
+            prevNode = node->prev;
+            prevNode->next = NULL;
+            set->tail = prevNode;
+        }
+        else{
+            nextNode = node->next;
+            prevNode = node->prev;
+            prevNode->next = nextNode;
+            nextNode->prev = prevNode;
+        }
+        freeNode((void **)&node);
+        return 1;
+    }
+    return -1;
+}
+
 unsigned int Size(const Set *set) {
 
     unsigned int len = 0;
