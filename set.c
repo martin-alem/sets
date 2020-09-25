@@ -183,3 +183,32 @@ unsigned int Size(const Set *set) {
     }
     return len;
 }
+
+
+Set *Union(const Set *set1, const Set *set2){
+
+    static Set set;
+    initSet(&set, set1->type);
+
+    if(set1->head == NULL && set2->head != NULL){
+        set.head = set2->head;
+        set.tail = set2->tail;
+    }
+    else if(set1->head != NULL && set2->head == NULL){
+        set.head = set1->head;
+        set.tail = set1->tail;
+    }
+    else if(set1->head != NULL && set2->head != NULL){
+        Node *node = set1->head, *node2 = set2->head;
+
+        while (node != NULL){
+            addElement(&set,(const void *)node->data);
+            node = node->next;
+        }
+        while (node2 != NULL){
+            addElement(&set,(const void *)node2->data);
+            node2 = node2->next;
+        }
+    }
+    return &set;
+}
