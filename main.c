@@ -10,7 +10,7 @@ int main() {
     initSet(&set2, 'i');
 
     int a = 10, b = 20, c = 30, d = 40, e = 50;
-    int f = 60, g = 70, h = 80, i = 90, j = 100;
+    int f = 50, g = 70, h = 30, i = 90, j = 100;
 
     addElement(&set1, (void *)&a);
     addElement(&set1, (void *)&b);
@@ -24,7 +24,7 @@ int main() {
     addElement(&set2, (void *)&i);
     addElement(&set2, (void *)&j);
 
-    Set *uSet = Union(&set1, &set2);
+    Set *uSet = intersection(&set1, &set2);
 
 
     int *data , counter;

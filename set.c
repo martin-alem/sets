@@ -6,7 +6,6 @@
 #include <string.h>
 #include "set.h"
 
-#define TYPE(args)
 
 void initSet(Set *set, char type){
     set->head = NULL;
@@ -109,26 +108,22 @@ int isMember(const Set *set, const void *data){
                     }
                 }
                 else if(set->type == 'i'){
-                    int *tempData = (int *)data, *tempNodeData = (int *)node->data;
-                    if(*tempData == *tempNodeData){
+                    if(*((int *)data) == *((int *)node->data)){
                         return 1;
                     }
                 }
                 else if(set->type == 'f'){
-                    float *tempData = (float *)data, *tempNodeData = (float *)node->data;
-                    if(*tempData == *tempNodeData){
+                    if(*((float *)data) == *((float *)node->data)){
                         return 1;
                     }
                 }
                 else if(set->type == 'd'){
-                    double *tempData = (double *)data, *tempNodeData = (double *)node->data;
-                    if(*tempData == *tempNodeData){
+                    if(*((double *)data) == *((double *)node->data)){
                         return 1;
                     }
                 }
                 else if(set->type == 'c'){
-                    char *tempData = (char *)data, *tempNodeData = (char *)node->data;
-                    if(*tempData == *tempNodeData){
+                    if(*((char *)data) == *((char *)node->data)){
                         return 1;
                     }
                 }
@@ -198,6 +193,7 @@ Set *Union(const Set *set1, const Set *set2){
         set.head = set1->head;
         set.tail = set1->tail;
     }
+
     else if(set1->head != NULL && set2->head != NULL){
         Node *node = set1->head, *node2 = set2->head;
 
@@ -208,6 +204,23 @@ Set *Union(const Set *set1, const Set *set2){
         while (node2 != NULL){
             addElement(&set,(const void *)node2->data);
             node2 = node2->next;
+        }
+    }
+    return &set;
+}
+
+Set *intersection(const Set *set1, const Set *set2){
+
+    static Set set;
+    initSet(&set, set1->type);
+
+    if(set1->head != NULL && set2->head != NULL){
+        Node *node = set1->head;
+        while(node != NULL){
+            if(isMember(set2, node->data)){
+                addElement(&set, node->data);
+            }
+            node = node->next;
         }
     }
     return &set;
