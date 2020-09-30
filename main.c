@@ -9,7 +9,7 @@ int main() {
     initSet(&set1, 'i');
     initSet(&set2, 'i');
 
-    int a = 10, b = 20, c = 30, d = 40, e = 50;
+    int a = 50, b = 100, c = 30, d = 90, e = 70;
     int f = 50, g = 70, h = 30, i = 90, j = 100;
 
     addElement(&set1, (void *)&a);
@@ -24,7 +24,7 @@ int main() {
     addElement(&set2, (void *)&i);
     addElement(&set2, (void *)&j);
 
-    Set *uSet = intersection(&set1, &set2);
+//    Set *uSet = difference(&set1, &set2);
 
 
     int *data , counter;
@@ -40,11 +40,12 @@ int main() {
         printf("%d ", *data);
     }
 
-    printf("\n---------Union Set----------\n");
-    for(counter = 0; counter  < Size(uSet); counter ++){
-        data = (int *)getElement(uSet, counter );
-        printf("%d ", *data);
-    }
+//    printf("\n---------Union Set----------\n");
+//    for(counter = 0; counter  < Size(uSet); counter ++){
+//        data = (int *)getElement(uSet, counter );
+//        printf("%d ", *data);
+//    }
+printf("Subset: %d", Subset(&set1, &set2));
 
     clearSet(&set1);
     clearSet(&set2);

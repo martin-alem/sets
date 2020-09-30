@@ -119,13 +119,13 @@ Set *intersection(const Set *set1, const Set *set2);
   DEF: computes the difference of two sets
   PARAM2: const Set *set1 - first set
   PARAM3: const Set *set2 - second set
-  RETURN: returns 1 if successful otherwise -1
+  RETURN: returns a pointer to a set
 */
 Set *difference(const Set *set1, const Set *set2);
 
 
 /*
-  DEF: computes the subset in of two sets
+  DEF: determines if set1 is a subset of set2
   PARAM: const Set *set1 - first set
   PARAM2: const Set *set2 - second set
   RETURN: returns 1 if set1 is a subset of set2 and -1 otherwise
@@ -134,7 +134,7 @@ int Subset(const Set *set1, const Set *set2);
 
 
 /*
-  DEF: computes the equality in of two sets
+  DEF: determines if set1 is equal to set2
   PARAM: const Set *set1 - first set
   PARAM2: const Set *set2 - second set
   RETURN: returns 1 if set1 is a equal to set2 and -1 otherwise

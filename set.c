@@ -225,3 +225,39 @@ Set *intersection(const Set *set1, const Set *set2){
     }
     return &set;
 }
+
+Set *difference(const Set *set1, const Set *set2){
+
+    static Set set;
+    initSet(&set, set1->type);
+
+    if(set2->head == NULL){
+        set.head = set1->head;
+        set.tail = set1->tail;
+    }
+    else if(set1->head != NULL && set2->head != NULL){
+        Node *node = set1->head;
+        while(node != NULL){
+            if(!isMember(set2, node->data)){
+                addElement(&set, node->data);
+            }
+            node = node->next;
+        }
+    }
+    return &set;
+}
+
+int Subset(const Set *set1, const Set *set2){
+
+    if(set1->head != NULL && set2->head != NULL){
+        Node *node = set1->head;
+        while(node != NULL){
+            if(!isMember(set2, node->data)){
+                return 0;
+            }
+            node = node->next;
+        }
+        return 1;
+    }
+    return 0;
+}
