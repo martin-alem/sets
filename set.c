@@ -261,3 +261,18 @@ int Subset(const Set *set1, const Set *set2){
     }
     return 0;
 }
+
+int Equal(const Set *set1, const Set *set2){
+
+    if(Size(set1) == Size(set2)){
+        Node *node = set1->head;
+        while(node != NULL){
+            if(!isMember(set2, node->data)){
+                return 0;
+            }
+            node = node->next;
+        }
+        return 1;
+    }
+    return 0;
+}
